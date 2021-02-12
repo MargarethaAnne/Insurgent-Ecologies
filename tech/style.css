@@ -119,7 +119,7 @@ p{
 /* subpages */
 
 .animated-body{
-  background: url("media/ground-plants.JPG") no-repeat;
+  background: url("../media/ground-plants.JPG") no-repeat;
   background-size: 100%;
   
   /* background-position: -500px -200px; */
@@ -272,6 +272,7 @@ a:hover{
   right: 0; 
   width:100%;
   border-radius: 8px;
+  box-shadow: 0 0 50px #cbea6b;
 }
 
 .l-bottom{
@@ -333,7 +334,7 @@ a:hover{
   padding:24px 8px 8px 0;
   box-shadow: 0 0 50px #cbea6b;
   background-color: #cbea6b;
-  background: url("media/ground-ferns.JPG");
+  background: url("../media/ground-ferns.JPG");
   /* background: url("media/thermal.jpg") no-repeat; */
 }
 
@@ -341,7 +342,7 @@ a:hover{
   height:25%;
   background-color:#cbea6b;
   box-shadow: 0 0 50px #cbea6b;
-  background: url("media/thermal.jpg") no-repeat;
+  background: url("../media/thermal.jpg") no-repeat;
   padding-top:25px;
   /* border:1px solid #ccc; */
 }
@@ -354,7 +355,7 @@ a:hover{
   padding-top:25px;
   background-color: #cbea6b;
   box-shadow: 0 0 50px #cbea6b;
-  background: url("media/ground-ferns.JPG");
+  background: url("../media/ground-ferns.JPG");
 }
 .section-content{
   font-size:18px;
