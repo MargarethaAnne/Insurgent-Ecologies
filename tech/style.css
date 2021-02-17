@@ -118,8 +118,14 @@ p{
 
 /* subpages */
 
-.animated-body{
-  background: url("../media/ground-plants.JPG") no-repeat;
+.content-body{
+  background: url("../media/ground-plants.JPG");
+  background-size: 100%;
+  
+  /* background-position: -500px -200px; */
+}
+.categories-body{
+  background: url("../media/ground-ferns-night2.jpg");
   background-size: 100%;
   
   /* background-position: -500px -200px; */
