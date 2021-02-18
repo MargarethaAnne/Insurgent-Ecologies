@@ -119,12 +119,18 @@ p{
 /* subpages */
 
 .content-body{
-  background: url("../media/ground-plants.JPG");
+  background: url("../media/ground-plants4.JPG");
+  background-size: cover;
+  
+  /* background-position: -500px -200px; */
+}
+.categories1-body{
+  background: url("../media/sky-tree-night.jpg");
   background-size: 100%;
   
   /* background-position: -500px -200px; */
 }
-.categories-body{
+.categories2-body{
   background: url("../media/ground-ferns-night2.jpg");
   background-size: 100%;
   
