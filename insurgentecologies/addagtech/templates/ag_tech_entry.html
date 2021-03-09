@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}URL for {% if code %}"{{ code }}"{% endif %}{% endblock %}
+
+{% block main %}
+
+<div class="wrap">
+  <div class="main">
+      <div class="container-header"><span style="background-color:cornsilk;">Category:<a href="">Robot Seeders and Planters</a></span> </div>
+      <div class="subflex">
+      <div class="left-column">
+          <div class="l-top">
+            <span class="section-headers">image name:{{ img_url }}</span><br />
+              
+              <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>                  -->
+          </div>
+          <div class="l-bottom">
+              <div class="l-bottom-content">
+                  <span class="section-headers">Software: 
+                  <a href="">vSet</a>, <a href="">Smart Firmer</a></span>
+                  <br /><br />
+                  <span style="background-color:cornsilk;">Pellentesque tempor efficitur finibus. Phasellus risus dui, pharetra in ex eu, tempus tempor tellus. Nunc in faucibus nulla. Donec a metus dapibus sapien gravida venenatis. Praesent vitae nisl nec risus pellentesque fermentum lobortis at libero. Aenean imperdiet sapien nunc, sit amet imperdiet mi tincidunt non. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur congue libero velit, eu convallis libero aliquam vel. 
+                  </span>
+              </div>
+          </div>
+      </div>
+      <div class="middle-column">
+       
+          <div class="m-middle">
+              <div class="m-middle-content">
+                  <span class="section-headers">Robot:<a href="">{{ company_product }}</a></span><br />
+                  
+              <span class="section-headers">Company:<a href="">{{ company_name }}</a></span><br />
+           
+              <span class="section-headers">Hardware Components:<a href="">??</a></span>
+              <br /><br /><br /><br />
+              <span style="background-color:cornsilk;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat mollis ante, eget sollicitudin augue rhoncus nec. Duis dolor risus, feugiat eu dolor at, pretium dictum turpis. Fusce felis felis, faucibus eu magna sit amet, dignissim pellentesque nulla. Phasellus eu metus at justo varius volutpat eu tempus nisl. Suspendisse sit amet augue gravida, consectetur enim id, semper nisi. Curabitur dui nibh, ultricies ut velit at, vehicula dictum justo. Mauris sapien ante, sodales eget odio ut, ullamcorper scelerisque ligula. Pellentesque tempor turpis nec accumsan sollicitudin. Maecenas eleifend metus ac condimentum feugiat. Suspendisse vel mauris quis lectus placerat tempus ac eget mi. Nunc in purus rhoncus, vulputate ante at, imperdiet eros. Nullam eu nulla nisi. Ut eu augue euismod, auctor est vitae, faucibus ligula. Duis nisl sapien, bibendum non maximus nec, rutrum ac arcu. Ut elit quam, faucibus et nibh et, aliquam feugiat dui. Mauris vel leo ipsum. 
+              </span>
+                  <br /><br /><br /><br />
+                  <span class="section-headers">References:</span><br />
+                  <span style="background-color:cornsilk;">
+                      <span class="section-content"><a href="">linkylinklink</a></span><br />
+                      <span class="section-content"><a href="">linkylinklink</a></span><br />
+                      <span class="section-content"><a href="">linkylinklink</a></span><br />
+                  </span>
+              </div>
+          </div> 
+
+      </div>   
+  </div> 
+  </div>
+  <div class="right-column">
+      <div class="r-top">
+          <span class="section-headers">Related Companies:</span><br />
+          <span style="background-color:cornsilk;">
+              <a href="">AGCO GROUP</a><br />
+              <a href="">Fendt</a><br />
+              <a href="">Precision Planting</a>
+          </span>
+      </div>
+      <div class="r-m1">
+          <div class="r-column-content">
+                  <h3>Locations</h3>  
+             
+          </div>                
+      </div> 
+      <div class="r-m2">
+          <div class="r-column-content">
+              <h3>Crops</h3>
+          </div>  
+      </div> 
+      <div class="r-bottom">
+          <div class="r-column-content">
+              <h3>Spell</h3>
+          </div>                
+      </div> 
+          
+  </div>   
+</div>
+
+
+
+<script>
+  function myFunction() {
+    var copyText = document.getElementById("new_company_product");
+    copyText.select();
+    document.execCommand("copy");
+  }
+</script>
+
+{% endblock %}
