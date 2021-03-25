@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}add new agtech{% endblock %}
+{% block main %}
+
+   <div class="grid-container">
+    <div class="grid-row">
+      <div class="invisible-square"></div>
+      <div class="invisible-square"></div>
+      <div class="invisible-square"></div>
+      <div class="invisible-square"></div>
+      <div class="square"><a href="#">Prophecies and Pacts</a></div>
+      <div class="invisible-square"></div>
+      <div class="square"><a href="#">APPLIED TECHNOLOGIES</a></div>
+      <div class="invisible-square"></div>
+    </div>
+    <div class="grid-row">
+      <div class="invisible-square"></div>
+      <div class="square"><a href="#">INSURGENT ECOLOGIES</a></div>
+      <div class="square"><a href="#">RHIZOMES AND WEAVES</a></div>
+      <div class="invisible-square"></div>
+      <div class="invisible-square"></div>
+      <div class="invisible-square"></div>
+      <div class="square"><a href="{{ url_for('home_bp.hardware') }}">Robot Seeders and Planters</a></div>
+      <div class="invisible-square"></div>
+    </div>
+    <div class="grid-row">
+      <div class="invisible-square"></div>
+      <div class="invisible-square"></div>
+      <div class="square"><a href="#">Agriculture Companies</a></div>
+      <div class="invisible-square"></div>
+      <div class="square"><a href="#">Precision Agriculture</a></div>
+      <div class="square"><a href="#">Naturalcultural Signs</a></div>
+      <div class="invisible-square"></div>
+      <div class="invisible-square"></div>
+    </div>
+    <div class="grid-row">
+      <div class="invisible-square"></div>
+      <div class="square"><a href="{{ url_for('home_bp.software') }}">Software and Spells</a></div>
+      <div class="invisible-square"></div>
+      <div class="invisible-square"></div>
+      <div class="invisible-square"></div>
+      <div class="invisible-square"></div>
+      <div class="square"><a href="#">Speculative Histories</a></div>
+      <div class="invisible-square"></div>
+    </div>
+ 
+  </div>
+
+  {% endblock %}

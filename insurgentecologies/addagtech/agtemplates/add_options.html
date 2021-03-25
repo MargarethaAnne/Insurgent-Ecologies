@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}add new agtech{% endblock %}
+{% block main %}
+<ul>
+   <div class="list">
+
+    <li><a href="{{ url_for('home_bp.add_new_hw') }}">Add Hardware</a></li>
+    <li><a href="{{ url_for('home_bp.add_new_sw') }}">Add Software</a></li>
+    <li><a href="">Add Company</a></li>
+    <li><a href="">Add Crop</a></li>
+    <li><a href="">Hex/ Spell/ Magick</a></li>
+
+  </ul>
+   </div>
+   
+{% endblock %}}

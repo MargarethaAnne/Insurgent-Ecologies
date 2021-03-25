@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}add new agtech{% endblock %}
+{% block main %}
+<ul>
+   <div class="list">
+     {% for hardware in hardware_list %}
+
+    <li><a href="{{ url_for('home_bp.show_hw_entry', id=hardware.id ) }}">{{ hardware.hw_company_product }}</a></li>
+
+    {% endfor %}
+  </ul>
+   </div>
+   
+{% endblock %}}

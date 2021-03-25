@@ -8,6 +8,7 @@ from flask_redis import FlaskRedis
 # from ddtrace import patch_all
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
+from flask_uploads import UploadSet, IMAGES, configure_uploads
 # patch_all()
 
 # Globally accessible libraries
@@ -18,9 +19,10 @@ def create_app():
     print(Config.SQLALCHEMY_DATABASE_URI)
     app = Flask(__name__, instance_relative_config=False)
     app.config.from_object("config.Config")
-    app.config["RECAPTCHA_PUBLIC_KEY"] = "iubhiukfgjbkhfvgkdfm"
-    app.config["RECAPTCHA_PARAMETERS"] = {"size": "100%"}
 
+    # app.config["RECAPTCHA_PARAMETERS"] = {"size": "100%"}
+    images = UploadSet('images', IMAGES)
+    configure_uploads(app, images)
     
     assets = Environment()  # Create an assets environment
     assets.init_app(app)  # Initialize Flask-Assets
@@ -38,6 +40,8 @@ def create_app():
         compile_static_assets(assets)  # Execute logic
         
         db.create_all()  # Create sql tables for our data models
+       
+
 
         return app
 

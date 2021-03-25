@@ -1,0 +1,55 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% assets "home_css_bundle" %}
+  <link
+    href="{{ ASSET_URL }}"
+    rel="stylesheet"
+    type="text/css"
+  />
+  {% endassets %}
+  <link rel="stylesheet" href="https://use.typekit.net/xzq5cmy.css">
+  <title>INSURGENT AND MAGICKAL ECOLOGIES</title>
+  <!-- /*test*/ -->
+  <style>
+     
+  </style>
+
+</head>
+<!-- <body>     -->
+
+<body class="content-body">
+ <!-- <div class="header"><h1>Welcome to the INSURGENT ECOLOGIES ARCHIVE by Coven Intelligence Program</h1></div> -->
+ <header><h1>Welcome to the <span><a href="/" style="color:yellow">INSURGENT ECOLOGIES ARCHIVE</a></span>, by Coven Intelligence Program</h1></header>
+ <nav>
+  <ul>
+    <li>
+      <a href="{{ url_for('home_bp.categories') }}">Agtech Database</a>
+    </li>
+    <li>
+      <a href="#">Insurgent Ecologies</a>
+    </li>
+    <li>
+      <a href="#">Magickal Intervention</a>
+    </li>
+    <li>
+      <a href="{{ url_for('home_bp.add_new') }}">New Entry</a>
+    </li>
+  </ul>
+</nav> 
+
+  
+{% for message in get_flashed_messages() %}
+    <h2>{{ message }}</h2>
+{% endfor %}
+
+{% block main %}
+{% endblock %}
+
+ <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+
+
+
+  {% extends 'base.html' %}
+{% block title %}add new agtech{% endblock %}
+{% block main %}
+
+<div class="wrap">
+  <div class="main">
+    <div class="container-header"><span style="background-color:cornsilk;">Add some tech</span> </div>
+      <div class="subflex">
+      <div class="left-column">
+<form method="POST" action="{{ url_for('home_bp.ag_tech_entry') }}" enctype="multipart/form-data" class="entryform">
+    {{ form.csrf_token }}
+  <fieldset class="form-field">
+      {{ form.hw_company_name.label }}
+      <br />
+      {{ form.hw_company_name(size=40) }}
+      {% if form.hw_company_name.errors %}
+      <ul class="errors">
+        {% for error in form.hw_company_name.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+  </fieldset>
+
+  <fieldset class="form-field">
+    {{ form.hw_company_product.label }}
+    <br />
+    {{ form.hw_company_product(size=40) }}
+    {% if form.hw_company_product.errors %}
+    <ul class="errors">
+      {% for error in form.hw_company_product.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </fieldset>
+
+  <fieldset class="form-field">
+    {{ form.hw_hardware_components.label }}
+    <br />
+    {{ form.hw_hardware_components(size=60) }}
+    {% if form.hw_hardware_components.errors %}
+    <ul class="errors">
+      {% for error in form.hw_hardware_components.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </fieldset>
+
+  <fieldset class="form-field">
+    {{ form.hw_categories.label }}
+    <br />
+    {{ form.hw_categories(class='dropdown-content') }}
+    {% if form.hw_categories.errors %}
+    <ul class="errors">
+      {% for error in form.hw_categories.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </fieldset>
+
+  <fieldset class="form-field">
+    {{ form.sw_id.label }}
+    <br />
+    {{ form.sw_id(class='dropdown-content') }}
+    {% if form.sw_id.errors %}
+    <ul class="errors">
+      {% for error in form.sw_id.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </fieldset>
+
+  <fieldset class="form-field">
+    {{ form.hw_product_description.label }}
+    <br />
+    {{ form.hw_product_description(style="width: 400px;height:200px;", class_="bar") }}
+    {% if form.hw_product_description.errors %}
+    <ul class="errors">
+      {% for error in form.hw_product_description.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </fieldset>
+
+  {{ form.hw_product_img.label(class_="form-imgupload") }}<br />
+  {{ form.hw_product_img(class_="form-imgupload") }}
+  {% if form.hw_product_img.errors %}
+    <ul class="errors">
+      {% for error in form.hw_product_img.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    </div>
+ 
+    <div class="middle-column">
+
+      <fieldset class="form-field">
+        {{ form.hw_references.label }}
+        <br />
+        {{ form.hw_references(size=60) }}
+        {% if form.hw_references.errors %}
+        <ul class="errors">
+          {% for error in form.hw_references.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </fieldset>
+      <br /><br /><br /> <br /><br /><br />
+   
+</div>
+</div>
+</div>
+<div class="right-column">
+  
+  <div class="r-m1" style="background:none;">
+    <fieldset class="form-field">
+      {{ form.hw_locations_desc.label }}
+      <br />
+      {{ form.hw_locations_desc(size=40) }}
+      {% if form.hw_locations_desc.errors %}
+      <ul class="errors">
+        {% for error in form.hw_locations_desc.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
+
+  {{ form.hw_locations_img.label(class_="form-imgupload") }}<br />
+  {{ form.hw_locations_img(class_="form-imgupload") }}
+  {% if form.hw_locations_img.errors %}
+    <ul class="errors">
+      {% for error in form.hw_locations_img.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+<div class="r-m2" style="background:none;">
+
+ 
+</div>
+<div class="r-bottom">
+
+  
+</div>
+<br />
+<br />
+{{ form.submit (class_="form-s") }}
+{{ message }}
+</div>
+
+
+</form>
+</div>
+  
+
+  {% endblock %}  

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}URL for {% if code %}"{{ code }}"{% endif %}{% endblock %}
+
+{% block main %}
+
+<div class="wrap">
+  <div class="main">
+      <div class="container-header">
+          <span style="background-color:cornsilk;">Category:
+        {% set cat_list = sw_products.sw_categories.split(',') %}
+        {% for item in cat_list %}
+        <a href="#">{{ item }}</a>
+        {% endfor %} 
+            </span> 
+      </div>
+      <div class="subflex">
+      <div class="left-column">
+          <div class="l-top">
+            
+            <img src="{{ url_for('home_bp.static', filename = 'user_files/'+sw_products.sw_product_img|safe) }}" />
+              <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>                  -->
+          </div>
+          <div class="l-bottom">
+              <div class="l-bottom-content">
+                  <span class="section-headers">Software: 
+                  <a href="">vSet</a>, <a href="">Smart Firmer</a></span>
+                  <br /><br />
+                  <span style="background-color:cornsilk;">Pellentesque tempor efficitur finibus. Phasellus risus dui, pharetra in ex eu, tempus tempor tellus. Nunc in faucibus nulla. Donec a metus dapibus sapien gravida venenatis. Praesent vitae nisl nec risus pellentesque fermentum lobortis at libero. Aenean imperdiet sapien nunc, sit amet imperdiet mi tincidunt non. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur congue libero velit, eu convallis libero aliquam vel. 
+                  </span>
+              </div>
+          </div>
+      </div>
+      <div class="middle-column">
+      
+          <div class="m-middle">
+              <div class="m-middle-content">
+                  <span class="section-headers">Robot:<a href="">{{ sw_products.sw_company_product }}</a></span><br />
+                  
+              <span class="section-headers">Company:<a href="">{{ sw_products.sw_company_name }}</a></span><br />
+           
+              <span class="section-headers">Hardware Components:<a href="">{{ sw_products.sw_software_components }}</a></span>
+              <br /><br /><br /><br />
+              <span style="background-color:cornsilk;">
+                {{ sw_products.sw_product_description }}
+              </span>
+                  <br /><br /><br /><br />
+                  <span class="section-headers">References:</span><br />
+                  <span style="background-color:cornsilk;">
+                      <span class="section-content"><a href="">{{ sw_products.sw_references }}</a></span><br />
+                      <span class="section-content"><a href="">linkylinklink</a></span><br />
+                      <span class="section-content"><a href="">{{ sw_products.sw_os_license }}</a></span><br />
+                  </span>
+              </div>
+          </div> 
+
+      </div>   
+  </div> 
+  </div>
+  <div class="right-column">
+      <div class="r-top">
+          <span class="section-headers">Related Companies:</span><br />
+          <span style="background-color:cornsilk;">
+              <a href="">AGCO GROUP</a><br />
+              <a href="">Fendt</a><br />
+              <a href="">Precision Planting</a>
+          </span>
+      </div>
+      <div class="r-m1">
+          <div class="r-column-content">
+                  <h3>{{ sw_products.sw_locations_desc }}</h3>  
+             
+          </div>                
+      </div> 
+      <div class="r-m2">
+          <div class="r-column-content">
+              <h3>Crops</h3>
+          </div>  
+      </div> 
+      <div class="r-bottom">
+          <div class="r-column-content">
+              <h3>Spell</h3>
+          </div>                
+      </div> 
+          
+  </div>   
+</div>
+
+
+
+<script>
+  function myFunction() {
+    var copyText = document.getElementById("new_company_product");
+    copyText.select();
+    document.execCommand("copy");
+  }
+</script>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}home title{% endblock %}
+{% block main %}
+
+<div class="homewrapper">
+        <span class="spanstyle1"></span>
+        <span class="spanstyle1"></span>
+        <span class="spanstyle2"></span>
+        <span class="spanstyle2"></span>
+  <div class="maincolumn1">
+    <div class="fifthz"></div>
+    <div class="twofifthz">
+        <span class="spanwrap" style="width:auto;position:relative">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut quam id libero rutrum ultrices. Donec sit amet sem nibh. Aliquam varius consectetur luctus. Suspendisse congue ligula vitae fringilla efficitur. Quisque cursus lacinia malesuada. Phasellus malesuada diam sed neque auctor fringilla. Pellentesque a eros nisl. Aliquam vulputate lobortis justo, quis pellentesque purus faucibus ut. Duis at facilisis urna, eget cursus ex. Proin eu nisi quis tellus tempus pulvinar eu ac nisl. Nullam eget malesuada tortor, vitae rhoncus orci. Phasellus id felis lorem. Vivamus efficitur sapien quis egestas sollicitudin. Donec a tempus nisi, eget accumsan leo.<br /><br />
+        Aliquam vulputate lobortis justo, quis pellentesque purus faucibus ut. Duis at facilisis urna, eget cursus ex. Proin eu nisi quis tellus tempus pulvinar eu ac nisl. Nullam eget malesuada tortor, vitae rhoncus orci. Phasellus id felis lorem. Vivamus efficitur sapien quis egestas sollicitudin. Donec a tempus nisi, eget accumsan leo.
+        </span>
+    </div>
+    <div class="fifthz"></div>
+
+  </div>
+  <div class="maincolumn2">
+    
+      
+      <div class="halfz">
+        <div class="outside-circle-img">
+        <div class="circle-img">
+        <img src="{{ url_for('static', filename='media/sample-image.jpg') }}" />
+        </div>
+        </div>
+      </div>
+    
+    </div>
+
+  </div>
+</div>
+
+
+  {% if codes %}
+  <h2>Codes you have created</h2>
+  <!-- <ul>
+    {% for code in codes %}
+    <li><a href="{{ url_for('urlshort.redirect_to_url', code=code) }}">{{ code }}</a></li>
+    {% endfor %}
+  </ul> -->
+  {% endif %}  
+
+  {% endblock %}  
