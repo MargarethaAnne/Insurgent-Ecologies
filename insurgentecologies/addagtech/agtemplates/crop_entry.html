@@ -6,12 +6,12 @@
 
 <div class="wrap">
   <div class="main">
-      <div class="container-header"><span style="background-color:cornsilk;">Category:<a href="#">{{ hw_products.hw_categories }}</a></span> </div>
+      <div class="container-header"><span style="background-color:cornsilk;">Category:<a href=""></a></span> </div>
       <div class="subflex">
       <div class="left-column">
           <div class="l-top">
             
-            <img src="{{ url_for('home_bp.static', filename = 'user_files/'+hw_products.hw_product_img|safe) }}" />
+            <img src="{{ url_for('home_bp.static', filename = 'user_files/'+crops.crop_img|safe) }}" />
               <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>                  -->
           </div>
           <div class="l-bottom">
@@ -19,8 +19,13 @@
                   <span class="section-headers">Software: 
                   <a href="{{ url_for('home_bp.show_sw_entry', id=sw_id.id ) }}">{{ sw_id.sw_company_product }}</a>, <a href="">Smart Firmer</a></span>
                   <br /><br />
-                  <span style="background-color:cornsilk;">Pellentesque tempor efficitur finibus. Phasellus risus dui, pharetra in ex eu, tempus tempor tellus. Nunc in faucibus nulla. Donec a metus dapibus sapien gravida venenatis. Praesent vitae nisl nec risus pellentesque fermentum lobortis at libero. Aenean imperdiet sapien nunc, sit amet imperdiet mi tincidunt non. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur congue libero velit, eu convallis libero aliquam vel. 
+                  <span style="background-color:cornsilk;">{{ sw_id.sw_description }}
                   </span>
+                  <span class="section-headers">Hardware: 
+                    <a href="{{ url_for('home_bp.show_hw_entry', id=hw_id.id ) }}">{{ hw_id.hw_company_product }}</a>, <a href="">Smart Firmer</a></span>
+                    <br /><br />
+                    <span style="background-color:cornsilk;">{{ hw_id.hw_description }}
+                    </span>
               </div>
           </div>
       </div>
@@ -28,21 +33,21 @@
       
           <div class="m-middle">
               <div class="m-middle-content">
-                  <span class="section-headers">Robot:<a href="">{{ hw_products.hw_company_product }}</a></span><br />
+                  <span class="section-headers">Crop:<a href="">{{ crops.crop_name }}</a></span><br />
                   
-              <span class="section-headers">Company:<a href="">{{ hw_products.hw_company_name }}</a></span><br />
+              <span class="section-headers">Genus species:<em><a href="">{{ crops.genus_species }}</a></em></span><br />
            
-              <span class="section-headers">Hardware Components:<a href="">{{ hw_products.hw_hardware_components }}</a></span>
+              <span class="section-headers">Intellectual property licenses:<a href="">{{ crops.crop_intellectual_property }}</a></span><br />
+              <span class="section-headers">Chemicals used:{{ crops.crop_chemicals_used }}</span>
               <br /><br /><br /><br />
               <span style="background-color:cornsilk;">
-                {{ hw_products.hw_product_description }}
+                {{ crops.crop_description }}
               </span>
                   <br /><br /><br /><br />
                   <span class="section-headers">References:</span><br />
                   <span style="background-color:cornsilk;">
-                      <span class="section-content"><a href="">{{ hw_products.hw_references }}</a></span><br />
-                      <span class="section-content"><a href="">linkylinklink</a></span><br />
-                      <span class="section-content"><a href="">{{ sw_id.sw_company_product }}</a></span><br />
+                      <span class="section-content"><a href="{{ url_for('home_bp.show_crop_entry', id=crops.id ) }}">{{ crops.crop_references }}</a></span><br />
+                      <span class="section-content"><a href="{{ url_for('home_bp.show_crop_entry', id=crops.id ) }}">{{ crops.crop_companions }}</a></span><br />
                   </span>
               </div>
           </div> 
@@ -54,14 +59,14 @@
       <div class="r-top">
           <span class="section-headers">Related Companies:</span><br />
           <span style="background-color:cornsilk;">
-              <a href="">AGCO GROUP</a><br />
+              <a href="{{ url_for('home_bp.show_company_entry', id=company_id.id ) }}">Company</a><br />
               <a href="">Fendt</a><br />
               <a href="">Precision Planting</a>
           </span>
       </div>
       <div class="r-m1">
           <div class="r-column-content">
-                  <h3>{{ hw_products.hw_locations_desc }}</h3>  
+                  <h3>{{ crops.crop_locations }}</h3>  
              
           </div>                
       </div> 

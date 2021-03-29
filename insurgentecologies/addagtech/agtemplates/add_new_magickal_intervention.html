@@ -1,0 +1,184 @@
+
+
+
+  {% extends 'base.html' %}
+  {% block title %}add new agtech{% endblock %}
+  {% block main %}
+  
+  <div class="wrap">
+    <div class="main">
+      <div class="container-header"><span style="background-color:cornsilk;">Add magickal interventions</span> </div>
+        <div class="subflex">
+        <div class="left-column">
+  <form method="POST" action="{{ url_for('home_bp.magickal_entry') }}" enctype="multipart/form-data" class="entryform">
+      {{ form.csrf_token }}
+    <fieldset class="form-field">
+        {{ form.spell_name.label }}
+        <br />
+        {{ form.spell_name(size=40) }}
+        {% if form.spell_name.errors %}
+        <ul class="errors">
+          {% for error in form.spell_name.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+    </fieldset>
+  
+    <fieldset class="form-field">
+        {{ form.spell_type.label }}
+        <br />
+        {{ form.spell_type(size=60) }}
+        {% if form.spell_type.errors %}
+        <ul class="errors">
+          {% for error in form.spell_type.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </fieldset>
+  
+      <fieldset class="form-field">
+        {{ form.hw_id.label }}
+        <br />
+        {{ form.hw_id(class='dropdown-content') }}
+        {% if form.hw_id.errors %}
+        <ul class="errors">
+          {% for error in form.hw_id.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </fieldset>
+
+      <fieldset class="form-field">
+        {{ form.sw_id.label }}
+        <br />
+        {{ form.sw_id(class='dropdown-content') }}
+        {% if form.sw_id.errors %}
+        <ul class="errors">
+          {% for error in form.sw_id.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </fieldset>
+
+      <fieldset class="form-field">
+        {{ form.crops_id.label }}
+        <br />
+        {{ form.crops_id(class='dropdown-content') }}
+        {% if form.crops_id.errors %}
+        <ul class="errors">
+          {% for error in form.crops_id.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </fieldset>
+
+      <fieldset class="form-field">
+        {{ form.company_id.label }}
+        <br />
+        {{ form.company_id(class='dropdown-content') }}
+        {% if form.company_id.errors %}
+        <ul class="errors">
+          {% for error in form.company_id.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </fieldset>
+
+    </div>
+   
+      <div class="middle-column">
+
+        <fieldset class="form-field">
+            {{ form.spell_description.label }}
+            <br />
+            {{ form.spell_description(rows=20, cols=50) }}
+            {% if form.spell_description.errors %}
+            <ul class="errors">
+              {% for error in form.spell_description.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+        </fieldset>
+    
+        <fieldset class="form-field">
+            {{ form.spell_code.label }}
+            <br />
+            {{ form.spell_code(rows=10, cols=50) }}
+            {% if form.spell_code.errors %}
+            <ul class="errors">
+              {% for error in form.spell_code.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+        </fieldset>
+      
+        {{ form.spell_img.label(class_="form-imgupload") }}<br />
+        {{ form.spell_img(class_="form-imgupload") }}
+        {% if form.spell_img.errors %}
+        <ul class="errors">
+            {% for error in form.spell_img.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+       
+        <br /><br /><br /> <br /><br /><br />
+     
+  </div>
+  </div>
+  </div>
+  <div class="right-column">
+    
+    <div class="r-m1" style="background:none;">
+    <fieldset class="form-field">
+        {{ form.spell_locations.label }}
+        <br />
+        {{ form.spell_locations(size=9) }}
+        {% if form.spell_locations.errors %}
+        <ul class="errors">
+          {% for error in form.spell_locations.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+    </fieldset>
+    </div>
+    <div class="r-m2" style="background:none;">
+    <fieldset class="form-field">
+          {{ form.spell_networks.label }}
+          <br />
+          {{ form.spell_networks }}
+          {% if form.spell_networks.errors %}
+          <ul class="errors">
+            {% for error in form.spell_networks.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+    </fieldset>
+    </div>
+  
+ 
+  <div class="r-bottom">
+  
+    
+  </div>
+ 
+  {{ form.submit (class_="form-s") }}
+  {{ message }}
+  </div>
+  
+  
+  </form>
+  </div>
+    
+  
+    {% endblock %}  

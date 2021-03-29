@@ -1,0 +1,172 @@
+
+
+
+  {% extends 'base.html' %}
+  {% block title %}add new agtech{% endblock %}
+  {% block main %}
+  
+  <div class="wrap">
+    <div class="main">
+      <div class="container-header"><span style="background-color:cornsilk;">Add a Company</span> </div>
+        <div class="subflex">
+        <div class="left-column">
+  <form method="POST" action="{{ url_for('home_bp.ag_company_entry') }}" enctype="multipart/form-data" class="entryform">
+      {{ form.csrf_token }}
+    <fieldset class="form-field">
+        {{ form.company_name.label }}
+        <br />
+        {{ form.company_name(size=40) }}
+        {% if form.company_name.errors %}
+        <ul class="errors">
+          {% for error in form.company_name.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+    </fieldset>
+  
+    <fieldset class="form-field">
+        {{ form.company_keywords.label }}
+        <br />
+        {{ form.company_keywords(size=60) }}
+        {% if form.company_keywords.errors %}
+        <ul class="errors">
+          {% for error in form.company_keywords.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </fieldset>
+
+  
+    <fieldset class="form-field">
+      {{ form.company_board_members.label }}
+      <br />
+      {{ form.company_board_members(size=60) }}
+      {% if form.company_board_members.errors %}
+      <ul class="errors">
+        {% for error in form.company_board_members.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
+  
+    <fieldset class="form-field">
+      {{ form.hw_id.label }}
+      <br />
+      {{ form.hw_id(class='dropdown-content') }}
+      {% if form.hw_id.errors %}
+      <ul class="errors">
+        {% for error in form.hw_id.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
+
+    <fieldset class="form-field">
+      {{ form.sw_id.label }}
+      <br />
+      {{ form.sw_id(class='dropdown-content') }}
+      {% if form.sw_id.errors %}
+      <ul class="errors">
+        {% for error in form.sw_id.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
+
+    <fieldset class="form-field">
+      {{ form.crops_id.label }}
+      <br />
+      {{ form.crops_id(class='dropdown-content') }}
+      {% if form.crops_id.errors %}
+      <ul class="errors">
+        {% for error in form.crops_id.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
+  
+    </div>
+   
+      <div class="middle-column">
+
+        <fieldset class="form-field">
+          {{ form.company_description.label }}
+          <br />
+          {{ form.company_description(rows=10, cols=50) }}
+          {% if form.company_description.errors %}
+          <ul class="errors">
+            {% for error in form.company_description.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+      </fieldset>
+    
+      {{ form.company_img.label(class_="form-imgupload") }}<br />
+      {{ form.company_img(class_="form-imgupload") }}
+      {% if form.company_img.errors %}
+      <ul class="errors">
+          {% for error in form.company_img.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+        <br /><br /><br /> <br /><br /><br />
+     
+  </div>
+  </div>
+  </div>
+  <div class="right-column">
+    
+    <div class="r-m1" style="background:none;">
+    <fieldset class="form-field">
+        {{ form.related_companies.label }}
+        <br />
+        {{ form.related_companies }}
+        {% if form.related_companies.errors %}
+        <ul class="errors">
+          {% for error in form.related_companies.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+    </fieldset>
+    </div>
+
+  
+  <div class="r-m2" style="background:none;">
+    <fieldset class="form-field">
+      {{ form.company_profits.label }}
+      <br />
+      {{ form.company_profits }}
+      {% if form.company_profits.errors %}
+      <ul class="errors">
+        {% for error in form.company_profits.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+</fieldset> 
+  </div>
+  <div class="r-bottom">
+  
+    
+  </div>
+  <br />
+  <br />
+  {{ form.submit (class_="form-s") }}
+  {{ message }}
+  </div>
+  
+  
+  </form>
+  </div>
+    
+  
+    {% endblock %}  

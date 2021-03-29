@@ -63,8 +63,37 @@
       </ul>
       {% endif %}
     </fieldset>
-  
+    
     <fieldset class="form-field">
+      {{ form.sw_os_license.label }}
+      <br />
+      {{ form.sw_os_license(size=60) }}
+      {% if form.sw_os_license.errors %}
+      <ul class="errors">
+        {% for error in form.sw_os_license.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
+
+  <fieldset class="form-field">
+    {{ form.sw_references.label }}
+    <br />
+    {{ form.sw_references(size=60) }}
+    {% if form.sw_references.errors %}
+    <ul class="errors">
+      {% for error in form.sw_references.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </fieldset>
+
+        </div>
+   
+      <div class="middle-column">
+ <fieldset class="form-field">
       {{ form.sw_product_description.label }}
       <br />
       {{ form.sw_product_description(style="width: 400px;height:200px;", class_="bar") }}
@@ -86,35 +115,8 @@
         {% endfor %}
       </ul>
       {% endif %}
-      </div>
-   
-      <div class="middle-column">
-
-        <fieldset class="form-field">
-            {{ form.sw_os_license.label }}
-            <br />
-            {{ form.sw_os_license(size=60) }}
-            {% if form.sw_os_license.errors %}
-            <ul class="errors">
-              {% for error in form.sw_os_license.errors %}
-                <li>{{ error }}</li>
-              {% endfor %}
-            </ul>
-            {% endif %}
-          </fieldset>
-
-        <fieldset class="form-field">
-          {{ form.sw_references.label }}
-          <br />
-          {{ form.sw_references(size=60) }}
-          {% if form.sw_references.errors %}
-          <ul class="errors">
-            {% for error in form.sw_references.errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-        </fieldset>
+      
+  
         <br /><br /><br /> <br /><br /><br />
      
   </div>
@@ -126,7 +128,7 @@
       <fieldset class="form-field">
         {{ form.sw_locations_desc.label }}
         <br />
-        {{ form.sw_locations_desc(size=40) }}
+        {{ form.sw_locations_desc(size=9) }}
         {% if form.sw_locations_desc.errors %}
         <ul class="errors">
           {% for error in form.sw_locations_desc.errors %}
@@ -136,6 +138,10 @@
         {% endif %}
       </fieldset>
   
+   
+  </div>
+  
+  <div class="r-m2" style="background:none;">
     {{ form.sw_locations_img.label(class_="form-imgupload") }}<br />
     {{ form.sw_locations_img(class_="form-imgupload") }}
     {% if form.sw_locations_img.errors %}
@@ -145,24 +151,31 @@
         {% endfor %}
       </ul>
       {% endif %}
-  </div>
-  
-  <div class="r-m2" style="background:none;">
-  
-   
+      
   </div>
   <div class="r-bottom">
   
-    
+    <fieldset class="form-field">
+      {{ form.crops_id.label }}
+      <br />
+      {{ form.crops_id(class='dropdown-content') }}
+      {% if form.crops_id.errors %}
+      <ul class="errors">
+        {% for error in form.crops_id.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
   </div>
-  <br />
-  <br />
+ 
   {{ form.submit (class_="form-s") }}
   {{ message }}
+  </form>
   </div>
   
   
-  </form>
+
   </div>
     
   

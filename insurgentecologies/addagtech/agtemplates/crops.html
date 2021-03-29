@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}add new agtech{% endblock %}
+{% block main %}
+<ul>
+   <div class="list">
+     {% for crop in crop_list %}
+
+    <li><a href="{{ url_for('home_bp.show_crop_entry', id=crop.id ) }}">{{ crop.crop_name }}</a></li>
+
+    {% endfor %}
+  </ul>
+   </div>
+   
+{% endblock %}}

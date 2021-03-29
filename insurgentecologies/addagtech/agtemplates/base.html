@@ -22,7 +22,17 @@
 <body class="content-body">
  <!-- <div class="header"><h1>Welcome to the INSURGENT ECOLOGIES ARCHIVE by Coven Intelligence Program</h1></div> -->
  <header><h1>Welcome to the <span><a href="/" style="color:yellow">INSURGENT ECOLOGIES ARCHIVE</a></span>, by Coven Intelligence Program</h1></header>
- <nav>
+
+
+  
+{% for message in get_flashed_messages() %}
+    <h2>{{ message }}</h2>
+{% endfor %}
+
+{% block main %}
+{% endblock %}
+
+<nav>
   <ul>
     <li>
       <a href="{{ url_for('home_bp.categories') }}">Agtech Database</a>
@@ -38,15 +48,6 @@
     </li>
   </ul>
 </nav> 
-
-  
-{% for message in get_flashed_messages() %}
-    <h2>{{ message }}</h2>
-{% endfor %}
-
-{% block main %}
-{% endblock %}
-
  <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   

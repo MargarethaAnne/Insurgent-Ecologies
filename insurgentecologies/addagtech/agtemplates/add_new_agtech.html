@@ -7,7 +7,7 @@
 
 <div class="wrap">
   <div class="main">
-    <div class="container-header"><span style="background-color:cornsilk;">Add some tech</span> </div>
+    <div class="container-header"><span style="background-color:cornsilk;">Add some hardware</span> </div>
       <div class="subflex">
       <div class="left-column">
 <form method="POST" action="{{ url_for('home_bp.ag_tech_entry') }}" enctype="multipart/form-data" class="entryform">
@@ -78,43 +78,43 @@
   </fieldset>
 
   <fieldset class="form-field">
-    {{ form.hw_product_description.label }}
+    {{ form.hw_references.label }}
     <br />
-    {{ form.hw_product_description(style="width: 400px;height:200px;", class_="bar") }}
-    {% if form.hw_product_description.errors %}
+    {{ form.hw_references(size=60) }}
+    {% if form.hw_references.errors %}
     <ul class="errors">
-      {% for error in form.hw_product_description.errors %}
+      {% for error in form.hw_references.errors %}
         <li>{{ error }}</li>
       {% endfor %}
     </ul>
     {% endif %}
   </fieldset>
-
-  {{ form.hw_product_img.label(class_="form-imgupload") }}<br />
-  {{ form.hw_product_img(class_="form-imgupload") }}
-  {% if form.hw_product_img.errors %}
-    <ul class="errors">
-      {% for error in form.hw_product_img.errors %}
-        <li>{{ error }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
     </div>
  
     <div class="middle-column">
-
       <fieldset class="form-field">
-        {{ form.hw_references.label }}
+        {{ form.hw_product_description.label }}
         <br />
-        {{ form.hw_references(size=60) }}
-        {% if form.hw_references.errors %}
+        {{ form.hw_product_description(style="width: 400px;height:200px;", class_="bar") }}
+        {% if form.hw_product_description.errors %}
         <ul class="errors">
-          {% for error in form.hw_references.errors %}
+          {% for error in form.hw_product_description.errors %}
             <li>{{ error }}</li>
           {% endfor %}
         </ul>
         {% endif %}
       </fieldset>
+    
+      {{ form.hw_product_img.label(class_="form-imgupload") }}<br />
+      {{ form.hw_product_img(class_="form-imgupload") }}
+      {% if form.hw_product_img.errors %}
+        <ul class="errors">
+          {% for error in form.hw_product_img.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+     
       <br /><br /><br /> <br /><br /><br />
    
 </div>
@@ -126,7 +126,7 @@
     <fieldset class="form-field">
       {{ form.hw_locations_desc.label }}
       <br />
-      {{ form.hw_locations_desc(size=40) }}
+      {{ form.hw_locations_desc(size=9) }}
       {% if form.hw_locations_desc.errors %}
       <ul class="errors">
         {% for error in form.hw_locations_desc.errors %}
@@ -136,6 +136,9 @@
       {% endif %}
     </fieldset>
 
+</div>
+
+<div class="r-m2" style="background:none;">
   {{ form.hw_locations_img.label(class_="form-imgupload") }}<br />
   {{ form.hw_locations_img(class_="form-imgupload") }}
   {% if form.hw_locations_img.errors %}
@@ -145,14 +148,22 @@
       {% endfor %}
     </ul>
     {% endif %}
-</div>
-
-<div class="r-m2" style="background:none;">
 
  
 </div>
 <div class="r-bottom">
-
+  <fieldset class="form-field">
+    {{ form.crops_id.label }}
+    <br />
+    {{ form.crops_id(class='dropdown-content') }}
+    {% if form.crops_id.errors %}
+    <ul class="errors">
+      {% for error in form.crops_id.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </fieldset>
   
 </div>
 <br />

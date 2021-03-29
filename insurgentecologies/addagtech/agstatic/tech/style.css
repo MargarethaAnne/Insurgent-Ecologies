@@ -174,7 +174,7 @@ a:hover{
   width:80%;
   height:80%;
   padding:5px;
-  margin:0 auto 100px auto;
+  margin:0 auto 0px auto;
   /* border:1px solid #ccc;
   display:flex; */
   display: -webkit-flex;
@@ -231,6 +231,8 @@ a:hover{
   }
 }
 
+.wrap a{color:#9327eb}
+
 .main{
   -webkit-flex: 3;
   -ms-flex: 3;
@@ -282,6 +284,7 @@ a:hover{
 }
 .l-top{
   height:35%;
+  overflow:hidden;
   /* border:1px solid #ccc; */
   padding-top: 75%;
   position: relative;
@@ -292,6 +295,7 @@ a:hover{
 }
 .l-top img{  
   position:  absolute;
+  overflow:hidden;
   top: 0;
   left: 0;
   bottom: 0;
@@ -299,6 +303,7 @@ a:hover{
   width:100%;
   border-radius: 8px;
   box-shadow: 0 0 50px #cbea6b;
+  width:100%;
 }
 
 .l-bottom{
@@ -508,7 +513,7 @@ a:hover{
   content: '';
   position: absolute;
   width:100%;
-  height: .5px;
+  height: 1px;
   background: black;
   opacity:.5;
   animation: animatex 20s linear infinite;

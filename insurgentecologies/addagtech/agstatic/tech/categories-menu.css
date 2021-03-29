@@ -2,6 +2,8 @@
 
 
 .grid-container {
+  /* width:80%; */
+  height:80%;
   display: grid;
   grid: repeat(4, 12vw) / auto-flow;
   /* width:80%;

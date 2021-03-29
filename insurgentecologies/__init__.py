@@ -9,6 +9,9 @@ from flask_redis import FlaskRedis
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
 from flask_uploads import UploadSet, IMAGES, configure_uploads
+from flask_migrate import Migrate 
+from sqlalchemy import MetaData
+
 # patch_all()
 
 # Globally accessible libraries
@@ -27,6 +30,7 @@ def create_app():
     assets = Environment()  # Create an assets environment
     assets.init_app(app)  # Initialize Flask-Assets
     db.init_app(app)
+    migrate = Migrate(app, db, render_as_batch=True)
 
     with app.app_context():
         # Import parts of our flask_wtforms_tutorial

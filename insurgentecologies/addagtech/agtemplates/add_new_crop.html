@@ -1,0 +1,213 @@
+
+
+
+  {% extends 'base.html' %}
+  {% block title %}add new agtech{% endblock %}
+  {% block main %}
+  
+  <div class="wrap">
+    <div class="main">
+      <div class="container-header"><span style="background-color:cornsilk;">Add a crop</span> </div>
+        <div class="subflex">
+        <div class="left-column">
+  <form method="POST" action="{{ url_for('home_bp.crop_entry') }}" enctype="multipart/form-data" class="entryform">
+      {{ form.csrf_token }}
+    <fieldset class="form-field">
+        {{ form.crop_name.label }}
+        <br />
+        {{ form.crop_name(size=40) }}
+        {% if form.crop_name.errors %}
+        <ul class="errors">
+          {% for error in form.crop_name.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+    </fieldset>
+  
+    <fieldset class="form-field">
+      {{ form.genus_species.label }}
+      <br />
+      {{ form.genus_species(size=40) }}
+      {% if form.genus_species.errors %}
+      <ul class="errors">
+        {% for error in form.genus_species.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
+  
+    <fieldset class="form-field">
+      {{ form.crop_intellectual_property.label }}
+      <br />
+      {{ form.crop_intellectual_property(size=60) }}
+      {% if form.crop_intellectual_property.errors %}
+      <ul class="errors">
+        {% for error in form.crop_intellectual_property.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
+  
+    <fieldset class="form-field">
+      {{ form.crop_chemicals_used.label }}
+      <br />
+      {{ form.crop_chemicals_used(class='dropdown-content') }}
+      {% if form.crop_chemicals_used.errors %}
+      <ul class="errors">
+        {% for error in form.crop_chemicals_used.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
+  
+
+    <fieldset class="form-field">
+      {{ form.sw_id.label }}
+      <br />
+      {{ form.sw_id(class='dropdown-content') }}
+      {% if form.sw_id.errors %}
+      <ul class="errors">
+        {% for error in form.sw_id.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
+
+    <fieldset class="form-field">
+        {{ form.hw_id.label }}
+        <br />
+        {{ form.hw_id(class='dropdown-content') }}
+        {% if form.hw_id.errors %}
+        <ul class="errors">
+          {% for error in form.hw_id.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </fieldset>
+
+      <fieldset class="form-field">
+        {{ form.company_id.label }}
+        <br />
+        {{ form.company_id(class='dropdown-content') }}
+        {% if form.company_id.errors %}
+        <ul class="errors">
+          {% for error in form.hw_id.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </fieldset>
+
+      </div>
+   
+      <div class="middle-column">
+        <fieldset class="form-field">
+          {{ form.crop_genetic_information.label }}
+          <br />
+          {{ form.crop_genetic_information(style="width: 400px;height:200px;", class_="bar") }}
+          {% if form.crop_genetic_information.errors %}
+          <ul class="errors">
+            {% for error in form.crop_genetic_information.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </fieldset>
+    
+    
+    
+        <fieldset class="form-field">
+            {{ form.crop_description.label }}
+            <br />
+            {{ form.crop_description(style="width: 400px;height:200px;", class_="bar") }}
+            {% if form.crop_description.errors %}
+            <ul class="errors">
+              {% for error in form.crop_description.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </fieldset>
+      
+        {{ form.crop_img.label(class_="form-imgupload") }}<br />
+        {{ form.crop_img(class_="form-imgupload") }}
+        {% if form.crop_img.errors %}
+          <ul class="errors">
+            {% for error in form.crop_img.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+        <br /><br /><br /> <br /><br /><br />
+     
+  </div>
+  </div>
+  </div>
+  <div class="right-column">
+    
+    <div class="r-m1" style="background:none;">
+      <fieldset class="form-field">
+        {{ form.crop_locations.label }}
+        <br />
+        {{ form.crop_locations(size=9) }}
+        {% if form.crop_locations.errors %}
+        <ul class="errors">
+          {% for error in form.crop_locations.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </fieldset>
+  
+   
+  </div>
+  
+  <div class="r-m2" style="background:none;">
+    <fieldset class="form-field">
+      {{ form.crop_companions.label }}
+      <br />
+      {{ form.crop_companions(size=60) }}
+      {% if form.crop_companions.errors %}
+      <ul class="errors">
+        {% for error in form.crop_companions.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
+   
+  </div>
+  <div class="r-bottom">
+    <fieldset class="form-field">
+      {{ form.crop_references.label }}
+      <br />
+      {{ form.crop_references(size=60) }}
+      {% if form.crop_references.errors %}
+      <ul class="errors">
+        {% for error in form.crop_references.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
+    
+  </div>
+  <br />
+  <br />
+  {{ form.submit (class_="form-s") }}
+  {{ message }}
+  </div>
+  
+  
+  </form>
+  </div>
+    
+  
+    {% endblock %}  
