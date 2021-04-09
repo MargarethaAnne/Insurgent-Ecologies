@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}home title{% endblock %}
+{% block main %}
+
+{% block content %}
+
+    <h1>User: {{ user.username }} <a href="{{ url_for('home_bp.edit_user') }}">Edit your profile</a></h1>
+
+
+    
+
+    <div class="list">
+
+        {% for eachuser in users %}
+        <li><a>{{ eachuser.username  }}</a></li>
+        {% endfor %}
+        <li>...</li>
+
+    {% for post in spell_posts %}
+
+    <li><a href="{{ url_for('home_bp.show_magickal_intervention', id=post.id ) }}">{{ post.spell_name }}</a></li>
+
+    {% endfor %}
+
+    {% for post in company_posts %}
+
+    <li><a href="{{ url_for('home_bp.show_company_entry', id=post.id ) }}">{{ post.company_name }}</a></li>
+
+    {% endfor %}
+
+    {% for post in crops_posts %}
+
+    <li><a href="{{ url_for('home_bp.show_crop_entry', id=post.id ) }}">{{ post.crop_name }}</a></li>
+
+    {% endfor %}
+
+    {% for post in sw_posts %}
+
+    <li><a href="{{ url_for('home_bp.show_sw_entry', id=post.id ) }}">{{ post.sw_company_product }}</a></li>
+
+    {% endfor %}
+
+    {% for post in hw_posts %}
+
+    <li><a href="{{ url_for('home_bp.show_hw_entry', id=post.id ) }}">{{ post.hw_company_product }}</a></li>
+
+    {% endfor %}
+    {% if user.last_seen %}<p>Last seen on: {{ user.last_seen }}</p>{% endif %}
+</div>
+{% endblock %}
+
+{% endblock %}  

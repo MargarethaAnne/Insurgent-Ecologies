@@ -1,0 +1,71 @@
+
+
+
+  {% extends 'base.html' %}
+  {% block title %}add new agtech{% endblock %}
+  {% block main %}
+  
+  <div class="wrap">
+    <div class="main">
+      <div class="container-header"><span style="background-color:cornsilk;">Add a hardware category</span> </div>
+        <div class="subflex">
+        <div class="left-column">
+  <form method="POST" action="{{ url_for('home_bp.hw_category_entry') }}" enctype="multipart/form-data" class="entryform">
+      {{ form.csrf_token }}
+    <fieldset class="form-field">
+        {{ form.hw_categories_name.label }}
+        <br />
+        {{ form.hw_categories_name(size=40) }}
+        {% if form.hw_categories_name.errors %}
+        <ul class="errors">
+          {% for error in form.sw_categories_name.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+    </fieldset>
+
+  
+
+
+      
+
+      </div>
+   
+      <div class="middle-column">
+        
+    
+    
+       
+
+        <br /><br /><br /> <br /><br /><br />
+     
+  </div>
+  </div>
+  </div>
+  <div class="right-column">
+  <div class="r-m1" style="background:none;">
+      
+  
+  </div>
+  
+  <div class="r-m2" style="background:none;">
+    
+   
+  </div>
+  <div class="r-bottom">
+    
+    
+  </div>
+  <br />
+  <br />
+  {{ form.submit (class_="form-s") }}
+  {{ message }}
+  </div>
+  
+  
+  </form>
+  </div>
+    
+  
+    {% endblock %}  

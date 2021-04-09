@@ -8,10 +8,11 @@
   <div class="main">
       <div class="container-header">
           <span style="background-color:cornsilk;">Category:
-        {% set cat_list = sw_products.sw_categories.split(',') %}
-        {% for item in cat_list %}
-        <a href="#">{{ item }}</a>
-        {% endfor %} 
+        
+
+        {% for sw_cats in categories_list %}
+                        {{ sw_cats.sw_categories_name }} <br />
+        {% endfor %}
             </span> 
       </div>
       <div class="subflex">
@@ -23,8 +24,11 @@
           </div>
           <div class="l-bottom">
               <div class="l-bottom-content">
-                  <span class="section-headers">Hardware: 
-                  <a href="">look in hardware to find sw_id match?</a>, <a href="">Smart Firmer</a></span>
+                  <span class="section-headers">
+                    {% for hw in hw_list %}
+                        {{ hw.hw_company_product }} <br />
+                    {% endfor %}
+                  </span>
                   <br /><br />
                   <span style="background-color:cornsilk;">Pellentesque tempor efficitur finibus. Phasellus risus dui, pharetra in ex eu, tempus tempor tellus. Nunc in faucibus nulla. Donec a metus dapibus sapien gravida venenatis. Praesent vitae nisl nec risus pellentesque fermentum lobortis at libero. Aenean imperdiet sapien nunc, sit amet imperdiet mi tincidunt non. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur congue libero velit, eu convallis libero aliquam vel. 
                   </span>
@@ -37,9 +41,12 @@
               <div class="m-middle-content">
                   <span class="section-headers">Robot:<a href="">{{ sw_products.sw_company_product }}</a></span><br />
                   
-              <span class="section-headers">Company:<a href="">{{ sw_products.sw_company_name }}</a></span><br />
+              <span class="section-headers">Company: 
+                  {% for co in companies_list %}
+                    <a href="">{{ co.company_name }}</a></span>               
+                  {% endfor %} </span><br />
            
-              <span class="section-headers">Hardware Components:<a href="">{{ sw_products.sw_software_components }}</a></span>
+              <span class="section-headers">Software Components:<a href="">{{ sw_products.sw_software_components }}</a></span>
               <br /><br /><br /><br />
               <span style="background-color:cornsilk;">
                 {{ sw_products.sw_product_description }}
@@ -75,6 +82,9 @@
       <div class="r-m2">
           <div class="r-column-content">
               <h3>Crops</h3>
+              {% for cr in crops_list %}
+              {{ cr.crop_name }} <br />
+              {% endfor %}
           </div>  
       </div> 
       <div class="r-bottom">

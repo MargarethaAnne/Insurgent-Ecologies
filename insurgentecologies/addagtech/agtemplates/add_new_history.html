@@ -1,0 +1,77 @@
+
+
+
+  {% extends 'base.html' %}
+  {% block title %}add new agtech{% endblock %}
+  {% block main %}
+  
+  <div class="wrap">
+    <div class="main">
+      <div class="container-header"><span style="background-color:cornsilk;">Add history</span> </div>
+        <div class="subflex">
+        <div class="left-column">
+  <form method="POST" action="{{ url_for('home_bp.history_entry') }}" enctype="multipart/form-data" class="entryform">
+      {{ form.csrf_token }}
+    <fieldset class="form-field">
+        {{ form.history_name.label }}
+        <br />
+        {{ form.history_name(size=40) }}
+        {% if form.history_name.errors %}
+        <ul class="errors">
+          {% for error in form.history_name.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+    </fieldset>
+
+  
+
+
+      <fieldset class="form-field">
+        {{ form.locations_list.label }}
+        <br />
+        {{ form.locations_list(class='dropdown-content') }}
+        {% if form.locations_list.errors %}
+        <ul class="errors">
+          {% for error in form.locations_list.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </fieldset>
+
+      </div>
+   
+      <div class="middle-column">
+    
+     
+  </div>
+  </div>
+  </div>
+  <div class="right-column">
+  <div class="r-m1" style="background:none;">
+      
+  
+  </div>
+  
+  <div class="r-m2" style="background:none;">
+    
+   
+  </div>
+  <div class="r-bottom">
+    
+    
+  </div>
+  <br />
+  <br />
+  {{ form.submit (class_="form-s") }}
+  {{ message }}
+  </div>
+  
+  
+  </form>
+  </div>
+    
+  
+    {% endblock %}  

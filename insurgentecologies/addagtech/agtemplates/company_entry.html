@@ -17,15 +17,17 @@
           <div class="l-bottom">
               <div class="l-bottom-content">
                   <span class="section-headers">Related Software: 
-                  <a href="">{{ sw_id.sw_company_product }}</a>, <a href="">Smart Firmer</a></span>
+                    {% for sw in sw_list %}
+                        {{ sw.sw_company_product }} <br />
+                    {% endfor %}
                   <br /><br />
-                  <span style="background-color:cornsilk;">{{ sw_id.sw_description }}
-                  </span>
+                  
                   <span class="section-headers">Related Hardware: 
-                    <a href="">{{ hw_id.hw_company_product }}</a>, <a href="">Smart Firmer</a></span>
+                    {% for hw in hw_list %}
+                        {{ hw.hw_company_product }} <br />
+                    {% endfor %}
                     <br /><br />
-                    <span style="background-color:cornsilk;">{{ hw_id.hw_description }}
-                    </span>
+               
                 
               </div>
           </div>
@@ -69,7 +71,9 @@
       <div class="r-m1">
           <div class="r-column-content">
             <span class="section-headers">Related Crops:</span><br />
-                  <h3>{{ crops_id.crop_name }}</h3>  
+            {% for c in crops_list %}
+                {{ c.crop_name }} <br />
+            {% endfor %} 
              
           </div>                
       </div> 

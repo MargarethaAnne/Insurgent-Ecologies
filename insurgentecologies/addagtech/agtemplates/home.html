@@ -14,6 +14,9 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut quam id libero rutrum ultrices. Donec sit amet sem nibh. Aliquam varius consectetur luctus. Suspendisse congue ligula vitae fringilla efficitur. Quisque cursus lacinia malesuada. Phasellus malesuada diam sed neque auctor fringilla. Pellentesque a eros nisl. Aliquam vulputate lobortis justo, quis pellentesque purus faucibus ut. Duis at facilisis urna, eget cursus ex. Proin eu nisi quis tellus tempus pulvinar eu ac nisl. Nullam eget malesuada tortor, vitae rhoncus orci. Phasellus id felis lorem. Vivamus efficitur sapien quis egestas sollicitudin. Donec a tempus nisi, eget accumsan leo.<br /><br />
         Aliquam vulputate lobortis justo, quis pellentesque purus faucibus ut. Duis at facilisis urna, eget cursus ex. Proin eu nisi quis tellus tempus pulvinar eu ac nisl. Nullam eget malesuada tortor, vitae rhoncus orci. Phasellus id felis lorem. Vivamus efficitur sapien quis egestas sollicitudin. Donec a tempus nisi, eget accumsan leo.
         </span>
+        {% block content %}
+           <h1>Hi, {{ current_user.username }}!</h1>       
+        {% endblock %}
     </div>
     <div class="fifthz"></div>
 

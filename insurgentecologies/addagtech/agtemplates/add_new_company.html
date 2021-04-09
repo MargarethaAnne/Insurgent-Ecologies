@@ -52,10 +52,10 @@
       {% endif %}
     </fieldset>
   
-    <fieldset class="form-field">
+    <fieldset class="form-field" style="float:left">
       {{ form.hw_id.label }}
       <br />
-      {{ form.hw_id(class='dropdown-content') }}
+      {{ form.hw_id }}
       {% if form.hw_id.errors %}
       <ul class="errors">
         {% for error in form.hw_id.errors %}
@@ -68,7 +68,7 @@
     <fieldset class="form-field">
       {{ form.sw_id.label }}
       <br />
-      {{ form.sw_id(class='dropdown-content') }}
+      {{ form.sw_id }}
       {% if form.sw_id.errors %}
       <ul class="errors">
         {% for error in form.sw_id.errors %}
@@ -78,18 +78,7 @@
       {% endif %}
     </fieldset>
 
-    <fieldset class="form-field">
-      {{ form.crops_id.label }}
-      <br />
-      {{ form.crops_id(class='dropdown-content') }}
-      {% if form.crops_id.errors %}
-      <ul class="errors">
-        {% for error in form.crops_id.errors %}
-          <li>{{ error }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </fieldset>
+
   
     </div>
    
@@ -117,7 +106,20 @@
           {% endfor %}
       </ul>
       {% endif %}
-        <br /><br /><br /> <br /><br /><br />
+        <br /><br />
+
+        <fieldset class="form-field">
+          {{ form.crops_id.label }}
+          <br />
+          {{ form.crops_id }}
+          {% if form.crops_id.errors %}
+          <ul class="errors">
+            {% for error in form.crops_id.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </fieldset>
      
   </div>
   </div>

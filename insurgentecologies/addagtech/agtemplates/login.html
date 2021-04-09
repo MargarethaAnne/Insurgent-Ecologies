@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block title %}home title{% endblock %}
+{% block main %}
+
+{% block app_content %}
+    <h1>Sign In</h1>
+    <div class="col-md-4">
+        {{ wtf.quick_form(form) }}
+    </div>
+    <br>
+    
+
+    <p>New User? <a href="{{ url_for('home_bp.register') }}">Click to Register!</a></p>
+    <p>
+        Forgot Your Password?
+        <a href="">Click to Reset It</a>
+    </p>
+
+{% endblock %}
+
+{% if codes %}
+<h2>Codes you have created</h2>
+<!-- <ul>
+  {% for code in codes %}
+  <li><a href="{{ url_for('urlshort.redirect_to_url', code=code) }}">{{ code }}</a></li>
+  {% endfor %}
+</ul> -->
+{% endif %}  
+
+{% endblock %}  

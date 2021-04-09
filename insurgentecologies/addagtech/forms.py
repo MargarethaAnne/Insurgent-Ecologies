@@ -1,11 +1,11 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
-from wtforms import StringField, TextField, TextAreaField, SubmitField, SelectField, widgets, SelectMultipleField
-from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional
+from wtforms import StringField, TextField, TextAreaField, SubmitField, SelectField, widgets, SelectMultipleField, PasswordField, BooleanField
+from wtforms.ext.sqlalchemy.fields import QuerySelectField, QuerySelectMultipleField
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length, Optional
 from wtforms.widgets.core import html_params
 from markupsafe import Markup
-from .models import HWProducts, SWProducts, Crops, Companies, MagickalInterventions
+from .models import HWProducts, SWProducts, Crops, Companies, MagickalInterventions, User, History, Locations, HWCategories, SWCategories
 import pycountry
 
 class CountrySelectField(SelectField):
@@ -13,6 +13,9 @@ class CountrySelectField(SelectField):
         super(CountrySelectField, self).__init__(*args, **kwargs)
         self.choices = [(country.name, country.name) for country in pycountry.countries]
 
+class MultiCheckboxField(SelectMultipleField):
+    widget = widgets.ListWidget(prefix_label=False)
+    option_widget = widgets.CheckboxInput() 
 
 class CustomSelect:
     """
@@ -44,6 +47,10 @@ class CustomSelect:
         return Markup("".join(html))
 
 class HWProductForm(FlaskForm):
+    # sw_choices = []
+    # for softwares in SWProducts.query.all():
+    #     sw_choices.append((softwares.sw_company_name, softwares.sw_company_name))
+
     """Company Product Form."""
     hw_company_name = StringField(
         'Company Name',
@@ -57,21 +64,31 @@ class HWProductForm(FlaskForm):
         'Hardware Components (please separate by comma)',
         [DataRequired()]
     )
-    hw_categories = SelectField(
-        'Category', 
-        choices=[
-            ('robot seeders and planters','robot seeders and planters'), 
-            ('precision technology','precision technology'),
-            ('cybernetic greenhouses','cybernetic greenhouses'),
-            ('irrigation','irrigation'),
-            ('pesticide and fertilizer robots','pesticide and fertilizer robots'),
-            ('sensors','sensors'),
-            ('herd management', 'herd management'),
-            ('robot harvesters','robot harvesters'),
-            ('other','other')
-            ],
-        validators=[DataRequired()] 
+    # hw_categories = SelectField(
+    #     'Category', 
+    #     choices=[
+    #         ('robot seeders and planters','robot seeders and planters'), 
+    #         ('precision technology','precision technology'),
+    #         ('cybernetic greenhouses','cybernetic greenhouses'),
+    #         ('irrigation','irrigation'),
+    #         ('pesticide and fertilizer robots','pesticide and fertilizer robots'),
+    #         ('sensors','sensors'),
+    #         ('herd management', 'herd management'),
+    #         ('robot harvesters','robot harvesters'),
+    #         ('other','other')
+    #         ],
+    #     validators=[DataRequired()] 
+    # )
+
+    hw_categories = QuerySelectMultipleField(
+        'Categories', 
+        query_factory=lambda: HWCategories.query.order_by(HWCategories.id).all(),
+        get_label='hw_categories_name',
+        option_widget=widgets.CheckboxInput(), 
+        widget=widgets.ListWidget(prefix_label=False), 
+        allow_blank=True
     )
+
     hw_product_description = TextAreaField(
         'Product Description',
         [DataRequired()]
@@ -85,13 +102,25 @@ class HWProductForm(FlaskForm):
         'References (links - please separate by comma)',
         [DataRequired()]
     )
-    sw_id = QuerySelectField(
+
+    sw_id = QuerySelectMultipleField(
         'Software used', 
-        query_factory=lambda: SWProducts.query.all(),
+        query_factory=lambda: SWProducts.query.order_by(SWProducts.id).all(),
         get_label='sw_company_product',
-        allow_blank=True,
-        # widget=CustomSelect(),
+        option_widget=widgets.CheckboxInput(), 
+        widget=widgets.ListWidget(prefix_label=False), 
+        allow_blank=True
+        )
+
+    companies_list = QuerySelectMultipleField(
+        'Associated Companies', 
+        query_factory=lambda: Companies.query.order_by(Companies.id).all(),
+        get_label='company_name',
+        option_widget=widgets.CheckboxInput(), 
+        widget=widgets.ListWidget(prefix_label=False), 
+        allow_blank=True
     )
+    
     hw_locations_desc = CountrySelectField(
         'Locations (please separate by comma)',
         [DataRequired()]
@@ -101,10 +130,12 @@ class HWProductForm(FlaskForm):
         [DataRequired()]
         # validators=[FileRequired(), FileAllowed(images, 'Images only!')]
     )
-    crops_id = QuerySelectField(
+    crops_id = QuerySelectMultipleField(
         'Related Crops', 
-        query_factory=lambda: Crops.query.all(),
+        query_factory=lambda: Crops.query.order_by(Crops.id).all(),
         get_label='crop_name',
+        option_widget=widgets.CheckboxInput(), 
+        widget=widgets.ListWidget(prefix_label=False), 
         allow_blank=True
     )
     # spells_id = StringField(
@@ -119,9 +150,9 @@ class HWProductForm(FlaskForm):
     # validators=[ExampleValidator(message="ERROR MESSAGE")],
     # )
 
-class MultiCheckboxField(SelectMultipleField):
-    widget = widgets.ListWidget(prefix_label=False)
-    option_widget = widgets.CheckboxInput()
+# class MultiCheckboxField(SelectMultipleField):
+#     widget = widgets.ListWidget(prefix_label=False)
+#     option_widget = widgets.CheckboxInput()
 
 class SWProductForm(FlaskForm):
     string_of_files = [
@@ -175,20 +206,41 @@ class SWProductForm(FlaskForm):
         [DataRequired()]
         # validators=[FileRequired(), FileAllowed(images, 'Images only!')]
     )
-    crops_id = QuerySelectField(
+    crops_id = QuerySelectMultipleField(
         'Related Crops', 
-        query_factory=lambda: Crops.query.all(),
+        query_factory=lambda: Crops.query.order_by(Crops.id).all(),
         get_label='crop_name',
+        option_widget=widgets.CheckboxInput(), 
+        widget=widgets.ListWidget(prefix_label=False), 
         allow_blank=True
     )
-    # crops_id = MultiCheckboxField(
-    #     'Crops (check all that apply)',
-    #     coerce=int,
-    #     validators=[DataRequired()]
-    # )
-    # spells_id = StringField(
-    #     'Spells (select one)'
-    # )
+    hw_id = QuerySelectMultipleField(
+        'Related Hardware', 
+        query_factory=lambda: HWProducts.query.order_by(HWProducts.id).all(),
+        get_label='hw_company_product',
+        option_widget=widgets.CheckboxInput(), 
+        widget=widgets.ListWidget(prefix_label=False), 
+        allow_blank=True
+        )
+
+    companies_list = QuerySelectMultipleField(
+        'Associated Companies', 
+        query_factory=lambda: Companies.query.order_by(Companies.id).all(),
+        get_label='company_name',
+        option_widget=widgets.CheckboxInput(), 
+        widget=widgets.ListWidget(prefix_label=False), 
+        allow_blank=True
+    )
+
+    sw_categories = QuerySelectMultipleField(
+        'Categories', 
+        query_factory=lambda: SWCategories.query.order_by(SWCategories.id).all(),
+        get_label='sw_categories_name',
+        option_widget=widgets.CheckboxInput(), 
+        widget=widgets.ListWidget(prefix_label=False), 
+        allow_blank=True
+    )
+
 
     # recaptcha = RecaptchaField()
     submit = SubmitField('Submit')
@@ -214,22 +266,34 @@ class CropForm(FlaskForm):
         'Chemicals used',
         [DataRequired()]
     )
-    sw_id = QuerySelectField(
-        'Software used', 
-        query_factory=lambda: SWProducts.query.all(),
+    # sw_id = QuerySelectField(
+    #     'Software used', 
+    #     query_factory=lambda: SWProducts.query.all(),
+    #     get_label='sw_company_product',
+    #     allow_blank=True
+    # )
+    sw_id = QuerySelectMultipleField(
+        'Related Software', 
+        query_factory=lambda: SWProducts.query.order_by(SWProducts.id).all(),
         get_label='sw_company_product',
+        option_widget=widgets.CheckboxInput(), 
+        widget=widgets.ListWidget(prefix_label=False), 
         allow_blank=True
     )
-    hw_id = QuerySelectField(
-        'Hardware used', 
-        query_factory=lambda: HWProducts.query.all(),
+    hw_id = QuerySelectMultipleField(
+        'Related Hardware', 
+        query_factory=lambda: HWProducts.query.order_by(HWProducts.id).all(),
         get_label='hw_company_product',
+        option_widget=widgets.CheckboxInput(), 
+        widget=widgets.ListWidget(prefix_label=False), 
         allow_blank=True
     )
-    company_id = QuerySelectField(
-        'Related Companies', 
-        query_factory=lambda: Companies.query.all(),
+    companies_list = QuerySelectMultipleField(
+        'Associated Companies', 
+        query_factory=lambda: Companies.query.order_by(Companies.id).all(),
         get_label='company_name',
+        option_widget=widgets.CheckboxInput(), 
+        widget=widgets.ListWidget(prefix_label=False), 
         allow_blank=True
     )
     crop_genetic_information = TextAreaField(
@@ -255,12 +319,6 @@ class CropForm(FlaskForm):
         'References (links - please separate by comma)',
         [DataRequired()]
     )
-    # sw_company_product_id = SelectField(
-    #     'Software Components', 
-    #     choices=[],
-    #     coerce=int,
-    #     validators=[DataRequired()] 
-    # )
     crop_locations = CountrySelectField(
         'Locations grown',
     )
@@ -291,24 +349,31 @@ class CompanyForm(FlaskForm):
         'Company image',
         # validators=[FileRequired(), FileAllowed(images, 'Images only!')]
     )
-    hw_id = QuerySelectField(
-        'Related Hardware', 
-        query_factory=lambda: HWProducts.query.all(),
-        get_label='hw_company_product',
-        allow_blank=True
-    )
-    sw_id = QuerySelectField(
+    sw_id = QuerySelectMultipleField(
         'Related Software', 
-        query_factory=lambda: SWProducts.query.all(),
+        query_factory=lambda: SWProducts.query.order_by(SWProducts.id).all(),
         get_label='sw_company_product',
+        option_widget=widgets.CheckboxInput(), 
+        widget=widgets.ListWidget(prefix_label=False), 
         allow_blank=True
     )
-    crops_id = QuerySelectField(
+    hw_id = QuerySelectMultipleField(
+        'Related Hardware', 
+        query_factory=lambda: HWProducts.query.order_by(HWProducts.id).all(),
+        get_label='hw_company_product',
+        option_widget=widgets.CheckboxInput(), 
+        widget=widgets.ListWidget(prefix_label=False), 
+        allow_blank=True
+    )
+    crops_id = QuerySelectMultipleField(
         'Related Crops', 
-        query_factory=lambda: SWProducts.query.all(),
-        get_label='sw_company_product',
+        query_factory=lambda: Crops.query.order_by(Crops.id).all(),
+        get_label='crop_name',
+        option_widget=widgets.CheckboxInput(), 
+        widget=widgets.ListWidget(prefix_label=False), 
         allow_blank=True
     )
+
     related_companies = StringField(
         'Related Companies',
         [DataRequired()]
@@ -388,3 +453,83 @@ class MagickalInterventionForm(FlaskForm):
 
     # recaptcha = RecaptchaField()
     submit = SubmitField('Submit')
+
+class LocationForm(FlaskForm):
+    location_name = StringField(
+        'Name of Location',
+        [DataRequired()]
+    )
+    history_list = QuerySelectField(
+        'history',
+        query_factory=lambda: History.query.all(),
+        get_label='history_name',
+        allow_blank=True
+        )
+    
+    submit = SubmitField('Submit')
+
+class HistoryForm(FlaskForm):
+    history_name = StringField(
+        'Name of History',
+        [DataRequired()]
+    )
+    locations_list = QuerySelectField(
+        'locations',
+        query_factory=lambda: Locations.query.all(),
+        get_label='location_name',
+        allow_blank=True
+        )
+    
+    submit = SubmitField('Submit')
+
+class SWCategoryForm(FlaskForm):
+    sw_categories_name = StringField(
+        'Name of Software Category',
+        [DataRequired()]
+    )
+    submit = SubmitField('Submit')
+
+class HWCategoryForm(FlaskForm):
+    hw_categories_name = StringField(
+        'Name of Hardware Category',
+        [DataRequired()]
+    )
+    submit = SubmitField('Submit')
+
+class RegistrationForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    password2 = PasswordField(
+        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Register')
+
+    def validate_username(self, username):
+        user = User.query.filter_by(username=username.data).first()
+        if user is not None:
+            raise ValidationError('Please use a different username.')
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user is not None:
+            raise ValidationError('Please use a different email address.')
+
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember Me')
+    submit = SubmitField('Sign In')
+
+class EditProfileForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+    def __init__(self, original_username, *args, **kwargs):
+        super(EditProfileForm, self).__init__(*args, **kwargs)
+        self.original_username = original_username
+
+    def validate_username(self, username):
+        if username.data != self.original_username:
+            user = User.query.filter_by(username=self.username.data).first()
+            if user is not None:
+                raise ValidationError('Please use a different username.')

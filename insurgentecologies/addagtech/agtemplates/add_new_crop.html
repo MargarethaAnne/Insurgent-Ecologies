@@ -65,7 +65,7 @@
     </fieldset>
   
 
-    <fieldset class="form-field">
+    <fieldset class="form-field" style="float:left">
       {{ form.sw_id.label }}
       <br />
       {{ form.sw_id(class='dropdown-content') }}
@@ -81,7 +81,7 @@
     <fieldset class="form-field">
         {{ form.hw_id.label }}
         <br />
-        {{ form.hw_id(class='dropdown-content') }}
+        {{ form.hw_id }}
         {% if form.hw_id.errors %}
         <ul class="errors">
           {% for error in form.hw_id.errors %}
@@ -91,18 +91,7 @@
         {% endif %}
       </fieldset>
 
-      <fieldset class="form-field">
-        {{ form.company_id.label }}
-        <br />
-        {{ form.company_id(class='dropdown-content') }}
-        {% if form.company_id.errors %}
-        <ul class="errors">
-          {% for error in form.hw_id.errors %}
-            <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-      </fieldset>
+
 
       </div>
    
@@ -145,7 +134,19 @@
           </ul>
           {% endif %}
 
-        <br /><br /><br /> <br /><br /><br />
+        <br /><br />
+        <fieldset class="form-field">
+          {{ form.companies_list.label }}
+          <br />
+          {{ form.companies_list }}
+          {% if form.companies_list.errors %}
+          <ul class="errors">
+            {% for error in form.companies_list.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </fieldset>
      
   </div>
   </div>

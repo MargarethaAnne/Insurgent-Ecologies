@@ -117,7 +117,21 @@
       {% endif %}
       
   
-        <br /><br /><br /> <br /><br /><br />
+        <br /><br />
+        <span style="font-size: 9px;"></span>
+    <fieldset class="form-field">
+      {{ form.hw_id.label }}
+      <br />
+      {{ form.hw_id(class='dropdown-content') }}
+      {% if form.hw_id.errors %}
+      <ul class="errors">
+        {% for error in form.hw_id.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
+  </span>
      
   </div>
   </div>
@@ -162,6 +176,21 @@
       {% if form.crops_id.errors %}
       <ul class="errors">
         {% for error in form.crops_id.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </fieldset>
+
+   
+
+    <fieldset class="form-field">
+      {{ form.companies_list.label }}
+      <br />
+      {{ form.companies_list(class='dropdown-content') }}
+      {% if form.companies_list.errors %}
+      <ul class="errors">
+        {% for error in form.companies_list.errors %}
           <li>{{ error }}</li>
         {% endfor %}
       </ul>

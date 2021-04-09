@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}URL for {% if code %}"{{ code }}"{% endif %}{% endblock %}
+
+{% block main %}
+
+<div class="wrap">
+  <div class="main">
+      <div class="container-header"><span style="background-color:cornsilk;">Locations:<a href="">{{ locations }}</a></span> </div>
+      <div class="subflex">
+      <div class="left-column">
+          <div class="l-top">
+            <span style="background-color:cornsilk;">
+                <a href="">{{ histories }}</a><br />
+            </span>
+       
+              <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>                  -->
+          </div>
+          <div class="l-bottom">
+              <div class="l-bottom-content">
+                  
+              </div>
+          </div>
+      </div>
+      <div class="middle-column">
+      
+          <div class="m-middle">
+              <div class="m-middle-content">
+
+                  
+              </div>
+          </div> 
+
+      </div>   
+  </div> 
+  </div>
+  <div class="right-column">
+      <div class="r-top">
+          <span class="section-headers">Related Companies:</span><br />
+          <span style="background-color:cornsilk;">
+              <a href="">AGCO GROUP</a><br />
+              <a href="">Fendt</a><br />
+              <a href="">Precision Planting</a>
+          </span>
+      </div>
+      <div class="r-m1">
+          <div class="r-column-content">
+                 
+             
+          </div>                
+      </div> 
+      <div class="r-m2">
+          <div class="r-column-content">
+              <h3>Crops</h3>
+          </div>  
+      </div> 
+      <div class="r-bottom">
+          <div class="r-column-content">
+              <h3>Spell</h3>
+          </div>                
+      </div> 
+          
+  </div>   
+</div>
+
+
+
+<script>
+  function myFunction() {
+    var copyText = document.getElementById("new_company_product");
+    copyText.select();
+    document.execCommand("copy");
+  }
+</script>
+
+{% endblock %}

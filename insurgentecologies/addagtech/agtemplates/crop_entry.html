@@ -16,16 +16,18 @@
           </div>
           <div class="l-bottom">
               <div class="l-bottom-content">
-                  <span class="section-headers">Software: 
-                  <a href="{{ url_for('home_bp.show_sw_entry', id=sw_id.id ) }}">{{ sw_id.sw_company_product }}</a>, <a href="">Smart Firmer</a></span>
+                  <span class="section-headers">Software used: 
+                    {% for sw in sw_list %}
+                        {{ sw.sw_company_product }} <br />
+                    {% endfor %}
                   <br /><br />
-                  <span style="background-color:cornsilk;">{{ sw_id.sw_description }}
-                  </span>
+   
                   <span class="section-headers">Hardware: 
-                    <a href="{{ url_for('home_bp.show_hw_entry', id=hw_id.id ) }}">{{ hw_id.hw_company_product }}</a>, <a href="">Smart Firmer</a></span>
+
+                    {% for hw in hw_list %}
+                        {{ hw.hw_company_product }} <br />
+                    {% endfor %}
                     <br /><br />
-                    <span style="background-color:cornsilk;">{{ hw_id.hw_description }}
-                    </span>
               </div>
           </div>
       </div>
@@ -59,9 +61,10 @@
       <div class="r-top">
           <span class="section-headers">Related Companies:</span><br />
           <span style="background-color:cornsilk;">
-              <a href="{{ url_for('home_bp.show_company_entry', id=company_id.id ) }}">Company</a><br />
-              <a href="">Fendt</a><br />
-              <a href="">Precision Planting</a>
+              <a href="">Company</a><br />
+              {% for co in companies_list %}
+              {{ co.company_name }} <br />
+          {% endfor %}
           </span>
       </div>
       <div class="r-m1">

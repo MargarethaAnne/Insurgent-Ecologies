@@ -16,6 +16,8 @@ def compile_static_assets(assets):
     home_css_bundle = Bundle(
         'home_bp/tech/categories-menu.css',
         'home_bp/tech/menu.css',
+        'home_bp/tech/homestyle.css',
+        'home_bp/tech/entry.css',
         'home_bp/tech/style.css',
         filters='cssmin',
         output='dist/css/home.css',

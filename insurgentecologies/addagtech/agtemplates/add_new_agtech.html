@@ -78,6 +78,19 @@
   </fieldset>
 
   <fieldset class="form-field">
+    {{ form.companies_list.label }}
+    <br />
+    {{ form.companies_list(class='dropdown-content') }}
+    {% if form.companies_list.errors %}
+    <ul class="errors">
+      {% for error in form.companies_list.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </fieldset>
+
+  <fieldset class="form-field">
     {{ form.hw_references.label }}
     <br />
     {{ form.hw_references(size=60) }}

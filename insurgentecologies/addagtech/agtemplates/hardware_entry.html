@@ -16,8 +16,10 @@
           </div>
           <div class="l-bottom">
               <div class="l-bottom-content">
-                  <span class="section-headers">Software: 
-                  <a href="{{ url_for('home_bp.show_sw_entry', id=sw_id.id ) }}">{{ sw_id.sw_company_product }}</a>, <a href="">Smart Firmer</a></span>
+                  <span class="section-headers">Software: </span>
+                      {% for sw in sw_list %}
+                          {{ sw.sw_company_product }} <br />
+                      {% endfor %}
                   <br /><br />
                   <span style="background-color:cornsilk;">Pellentesque tempor efficitur finibus. Phasellus risus dui, pharetra in ex eu, tempus tempor tellus. Nunc in faucibus nulla. Donec a metus dapibus sapien gravida venenatis. Praesent vitae nisl nec risus pellentesque fermentum lobortis at libero. Aenean imperdiet sapien nunc, sit amet imperdiet mi tincidunt non. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur congue libero velit, eu convallis libero aliquam vel. 
                   </span>
@@ -30,8 +32,12 @@
               <div class="m-middle-content">
                   <span class="section-headers">Robot:<a href="">{{ hw_products.hw_company_product }}</a></span><br />
                   
-              <span class="section-headers">Company:<a href="">{{ hw_products.hw_company_name }}</a></span><br />
-           
+              <span class="section-headers">Company:
+                {% for co in companies_list %}
+                    <a href="">{{ co.company_name }}</a></span>               
+                {% endfor %}  
+                
+                <br />
               <span class="section-headers">Hardware Components:<a href="">{{ hw_products.hw_hardware_components }}</a></span>
               <br /><br /><br /><br />
               <span style="background-color:cornsilk;">
@@ -42,7 +48,7 @@
                   <span style="background-color:cornsilk;">
                       <span class="section-content"><a href="">{{ hw_products.hw_references }}</a></span><br />
                       <span class="section-content"><a href="">linkylinklink</a></span><br />
-                      <span class="section-content"><a href="">{{ sw_id.sw_company_product }}</a></span><br />
+                      
                   </span>
               </div>
           </div> 
@@ -68,6 +74,9 @@
       <div class="r-m2">
           <div class="r-column-content">
               <h3>Crops</h3>
+         {% for cr in crops_list %}
+              {{ cr.crop_name }} <br />
+          {% endfor %}
           </div>  
       </div> 
       <div class="r-bottom">
